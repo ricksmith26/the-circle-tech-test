@@ -14,7 +14,7 @@ const RenderText = (props) => {
 
     return (
         <div>
-            <b>{question.title}</b>
+            <b className="title">{question.title}</b>
         </div>
     )
 }

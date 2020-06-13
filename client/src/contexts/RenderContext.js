@@ -23,7 +23,7 @@ const createQuestionMap = (questions) => {
 
 const RenderContextProvider = (props) => {
     useEffect(() => {
-        console.log("We will call out to do a quiz ICL here");
+        console.log("We will call out to do a quiz ICL here", props);
     }, []);
 
     let questionData = createQuestionMap(RenderData.questions);
@@ -38,7 +38,8 @@ const RenderContextProvider = (props) => {
         renderButton: true,
         renderDropDown: true,
         completed: false,
-        quizId: props.user.username + '_' + RenderData.id,
+        quizId: RenderData.id,
+        user: props.user
     });
 
     return (

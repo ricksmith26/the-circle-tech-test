@@ -42,9 +42,9 @@ const RenderMultiSelect = (props) => {
     return (
         <div>
             <div>
-                <b>{question.title}</b>
+                <b className="title" style={{marginBottom: '36px'}}>{question.title}</b>
             </div>
-            <div>
+            <div style={{marginTop: '36px'}}>
                 <Input type="select" name="select" id="exampleSelect" multiple onChange={handleChange}>
                     {question.answers.map(answer => {
                         return renderOption(answer);
@@ -53,7 +53,7 @@ const RenderMultiSelect = (props) => {
             </div>
 
             <div>
-                <button onClick={() => handleClick()}>Continue</button>
+                <button className="blue-button" style={{marginTop: '36px'}} onClick={() => handleClick()}>Continue</button>
             </div>
 
             {state.viewAlert && renderAlert()}

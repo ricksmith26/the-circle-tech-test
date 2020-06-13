@@ -33,6 +33,7 @@ export const renderReducer = (state, action) => {
 
 const createResponse = (state) => {
   return {
+    user: state.user,
     quizId: "" + state.quizId,
     questionAnswers: createAnswerObject(state.answers)
   }

@@ -1,38 +1,109 @@
 .App {
-  text-align: center;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+	background-color:rgba(18,105,220,0.8);
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+label {
+    font-size: large;
+    color: #DEE9FC;
+    font-weight: bold;
+}
+
+.centeredView {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+	height: max-content;
+}
+
+input {
+	padding: 5px;
+	font-size: 16px;
+	border-width: 4px;
+	border-color: #6395F2;
+	background-color: #DEE9FC;
+	color: #000000;
+	border-style: solid;
+	border-radius: 4px;
+	box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+	margin: 36px;
+}
+input:focus {
+	outline:none;
+}
+
+.blue-button {
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #6395F2 5%, #1258DC 100%);
+	background-color:#6395F2;
+	border-radius:6px;
+	border:1px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+}
+.blue-button:hover {
+	background:linear-gradient(to bottom, #1258DC 5%, #6395F2 100%);
+	background-color:#1258DC;
+}
+.blue-button:active {
+	position:relative;
+	top:1px;
+}
+
+.title {
+	color: #DEE9FC;
+
+}
+
+.error {
+	color: red;
 }

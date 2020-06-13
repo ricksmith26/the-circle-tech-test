@@ -4,10 +4,12 @@ import SignUp from './SignUp';
 import Quiz from './Quiz';
 import RenderContextProvider from '../contexts/RenderContext';
 
+import circleLogo from '../shared/thecircle.jpeg';
+
 
 export default () => {
     const [index, setIndex] = useState(0);
-    const [user, setUser] = useState({email: '', cognito_username: ''})
+    const [user, setUser] = useState({email: '', cognitoUsername: ''})
 
     const changeIndex = (index) => {
         setIndex(index)
@@ -16,28 +18,31 @@ export default () => {
     const saveUser = (user) => {
         setUser({
             email: user.email,
-            cognito_username: user.cognito_username
+            cognitoUsername: user.cognitoUsername
         })
-        changeIndex(3)
+        changeIndex(2)
     }
 
     return (
-        <div>
-            {index === 0 && <Login saveUser={saveUser}/>}
-            {index === 1 && <SignUp/>}
+        <div >
+            <img src={circleLogo} style={{marginTop: '44px', marginBottom: '44px'}}/>
+            <div className="centeredView">
+                {index === 0 && <Login saveUser={saveUser}/>}
+                {index === 1 && <SignUp changeIndex={changeIndex}/>}
 
-            {index === 0 || index == 1
-                &&  <div>
-                        <button onClick={() => {
-                            index === 0 ? changeIndex(1) : changeIndex(0)
-                        }}>{index === 0 ? 'Register' : 'Login'}</button>
-                    </div>}
+                {(index === 0 || index == 1)
+                    &&  <div>
+                            <button className="blue-button" onClick={() => {
+                                index === 0 ? changeIndex(1) : changeIndex(0)
+                            }}>{index === 0 ? 'Register' : 'Go To Login'}</button>
+                        </div>}
 
-            {index === 3 && 
-                <RenderContextProvider user={user}>
-                    <Quiz user={user}></Quiz>
-                </RenderContextProvider>
-                }
+                {index === 2 && 
+                    <RenderContextProvider user={user}>
+                        <Quiz user={user}></Quiz>
+                    </RenderContextProvider>
+                    }
+            </div>
         </div>
     )
 

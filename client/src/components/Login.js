@@ -5,6 +5,7 @@ import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 export default (props) => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+   const [error, setError] = useState('')
 
    const onSubmit = event => {
       event.preventDefault();
@@ -23,7 +24,7 @@ export default (props) => {
    user.authenticateUser(authDetails, {
 
       onSuccess: data => {
-         console.error('onSuccess:', data);
+         console.error('onSuccess:', data.idToken.payload.sub);
          props.saveUser({
             email: data.idToken.payload.email,
             cognitoUsername: data.idToken.payload.sub
@@ -32,7 +33,7 @@ export default (props) => {
 
       onFailure: error => {
          console.error('onError:', error);
-
+         setError(error.message)
 
       },
 
@@ -42,22 +43,28 @@ export default (props) => {
    })
 };
    return (
-      <div>
-         <form onSubmit={onSubmit}>
-            <label>Email</label>
-            <input
-               value={email}
-               onChange={event => setEmail(event.target.value)}
-            />
-            <label>Password</label>
-            <input
-               value={password}
-               onChange={event => setPassword(event.target.value)}
-            />
+      <form onSubmit={onSubmit}>
+         <div className="centeredView">
+               <label>Email</label>
+               <input
+                  style={{marginBottom: '36px'}}
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+               />
+               <label>Password</label>
+               <input
+                  type="password"
+                  style={{marginBottom: '36px'}}
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+               />
 
-            <button type='submit'>Login</button>
-         </form>
-      </div>
+               {error.length > 0 ? <p className="error">{error}</p> : null}
+
+
+               <button style={{marginBottom: '24px'}} className="blue-button" type='submit'>Login</button>
+         </div>
+      </form>
    )
 
 }
